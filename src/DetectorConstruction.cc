@@ -782,31 +782,52 @@ void DetectorConstruction::ConstructSDandField()
     fEmFieldSetup.Put(fieldSetup);
   } 
  
-  //2S
+
   fElField1z = -(fPotBackplane1-fPotStrip1)/fDet1SizeZ;
   //G4cout 
       //<< "\n Electric field inside Detector 1: " 
       //<< G4BestUnit(fElField1z, "Electric field")
       //<< G4endl;
-  fElField1 = new G4UniformElectricField(G4ThreeVector(0.0, 0.0, fElField1z));
 
-  fLocalEquation1 = new G4EqMagElectricField(fElField1);
+  //2S sensor 1
+  fElField1F = new G4UniformElectricField(G4ThreeVector(0.0, 0.0, fElField1z));
 
-  G4int nvar1 = 8;
-  fLocalStepper1 = new G4ClassicalRK4(fLocalEquation1, nvar1);
+  fLocalEquation1F = new G4EqMagElectricField(fElField1F);
 
-  G4double fMinStep1 = 0.010*mm;
+  G4int nvar1F = 8;
+  fLocalStepper1F = new G4ClassicalRK4(fLocalEquation1F, nvar1F);
 
-  fIntgrDriver1 = new G4MagInt_Driver(fMinStep1, fLocalStepper1, fLocalStepper1->GetNumberOfVariables());
-  fLocalChordFinder1 = new G4ChordFinder(fIntgrDriver1);
+  G4double fMinStep1F = 0.010*mm;
 
-  fLocalFieldManager1 = new G4FieldManager();
-  fLocalFieldManager1->SetDetectorField(fElField1);
-  fLocalFieldManager1->SetChordFinder(fLocalChordFinder1);
+  fIntgrDriver1F = new G4MagInt_Driver(fMinStep1F, fLocalStepper1F, fLocalStepper1F->GetNumberOfVariables());
+  fLocalChordFinder1F = new G4ChordFinder(fIntgrDriver1F);
 
-  G4bool allLocal1 = true ;
-  fLBox1->SetFieldManager(fLocalFieldManager1, allLocal1);
-  fLBox2->SetFieldManager(fLocalFieldManager1, allLocal1);
+  fLocalFieldManager1F = new G4FieldManager();
+  fLocalFieldManager1F->SetDetectorField(fElField1F);
+  fLocalFieldManager1F->SetChordFinder(fLocalChordFinder1F);
+
+  G4bool allLocal1F = true ;
+  fLBox1->SetFieldManager(fLocalFieldManager1F, allLocal1F);
+
+  //2S sensor 2
+  fElField1B = new G4UniformElectricField(G4ThreeVector(0.0, 0.0, -fElField1z));
+
+  fLocalEquation1B = new G4EqMagElectricField(fElField1B);
+
+  G4int nvar1B = 8;
+  fLocalStepper1B = new G4ClassicalRK4(fLocalEquation1B, nvar1B);
+
+  G4double fMinStep1B = 0.010*mm;
+
+  fIntgrDriver1B = new G4MagInt_Driver(fMinStep1B, fLocalStepper1B, fLocalStepper1B->GetNumberOfVariables());
+  fLocalChordFinder1B = new G4ChordFinder(fIntgrDriver1B);
+
+  fLocalFieldManager1B = new G4FieldManager();
+  fLocalFieldManager1B->SetDetectorField(fElField1B);
+  fLocalFieldManager1B->SetChordFinder(fLocalChordFinder1B);
+
+  G4bool allLocal1B = true ;
+  fLBox2->SetFieldManager(fLocalFieldManager1B, allLocal1B);
 
 
   //Pixel sensors

@@ -341,7 +341,7 @@ StackingAction::ClassifyNewTrack(const G4Track* track)
         /*G4cout
             << "\n electron from 2S"
             << G4endl;*/
-	if ((z_prim >= posZDUT + Dist/2) && (z_prim <= (posZDUT + Dist/2 + Strip2Depth))&& (x_prim >= (-Strip2Length/2)) && (x_prim <= Strip2Length/2)) {
+	if ((z_prim >= posZDUT + Dist/2 + Det2SizeZ - Strip2Depth) && (z_prim <= posZDUT + Dist/2 + Det2SizeZ) && (x_prim >= (-Strip1Length/2)) && (x_prim <= Strip1Length/2)) {
             /*G4cout
                << "\n electron from 2S"
                << G4endl;*/

@@ -289,12 +289,19 @@ class DetectorConstruction : public G4VUserDetectorConstruction
      DetectorMessenger* fDetectorMessenger;
      G4Cache<ElectricFieldSetup*> fEmFieldSetup;
 
-     G4FieldManager*         fLocalFieldManager1;
-     G4EqMagElectricField*   fLocalEquation1;
-     G4ChordFinder*          fLocalChordFinder1;
-     G4ElectricField*        fElField1;
-     G4MagIntegratorStepper* fLocalStepper1;
-     G4MagInt_Driver*        fIntgrDriver1;
+     G4FieldManager*         fLocalFieldManager1F;
+     G4EqMagElectricField*   fLocalEquation1F;
+     G4ChordFinder*          fLocalChordFinder1F;
+     G4ElectricField*        fElField1F;
+     G4MagIntegratorStepper* fLocalStepper1F;
+     G4MagInt_Driver*        fIntgrDriver1F;
+
+     G4FieldManager*         fLocalFieldManager1B;
+     G4EqMagElectricField*   fLocalEquation1B;
+     G4ChordFinder*          fLocalChordFinder1B;
+     G4ElectricField*        fElField1B;
+     G4MagIntegratorStepper* fLocalStepper1B;
+     G4MagInt_Driver*        fIntgrDriver1B;
 
      G4FieldManager*         fLocalFieldManager2;
      G4EqMagElectricField*   fLocalEquation2;

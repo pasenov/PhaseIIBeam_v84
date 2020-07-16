@@ -135,3 +135,5 @@ Version 23 was a trial version to find the mistake in the rotation matrix of the
 20/2/2020 Version 82: Random decision if charge will move to adjacent pixel/strip or not.
 
 21/2/2020 Version 83: Find the optimal value of the sigma of shared charge for pixels and strips.
+
+16/7/2020 Version 85: Correction of electric field.

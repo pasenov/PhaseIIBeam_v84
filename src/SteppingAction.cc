@@ -564,7 +564,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
          }
 
 
-   	 if ((z >= posZDUT + Dist/2) && (z <= (posZDUT + Dist/2 + Strip2Depth))&& (x >= (-Strip2Length/2)) && (x <= Strip2Length/2)) {
+   	 if ((z >= posZDUT + Dist/2 + Det2SizeZ - Strip2Depth) && (z <= (posZDUT + Dist/2 + Det2SizeZ))&& (x >= (-Strip2Length/2)) && (x <= Strip2Length/2)) {
      	  div = y/(StripWidth+StripDist);
 	  if (y == 0)   {
 	     iSecret = rand() % 99;
@@ -1071,7 +1071,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
  if (volume == fDetectorconstruction->GetDet2()) {
    fEventaction->AddEnergyDeposit2(edep);
 
-   if ((z >= posZDUT + Dist/2) && (z <= (posZDUT + Dist/2 + Strip2Depth))&& (x >= (-Strip2Length/2)) && (x <= Strip2Length/2)) {
+   if ((z >= posZDUT + Dist/2 + Det2SizeZ - Strip2Depth) && (z <= (posZDUT + Dist/2 + Det2SizeZ))&& (x >= (-Strip2Length/2)) && (x <= Strip2Length/2)) {
      div = y/(StripWidth+StripDist);
      if (y == 0)   {
 	iSecret = rand() % 99;
